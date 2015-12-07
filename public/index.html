@@ -2,3 +2,73 @@
 	index.html
 	@DESCRIPTION: this will be the main view for your app
 -->
+<!doctype html>
+
+<!--ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="scotchTodo">
+	<head>
+		<!-- META -->
+		<meta charset="utf-8">
+		<meta name="viewpoint" content="width=device-width, initial-scale=1">
+
+		<title>Node/Angular Todo App</title>
+
+		<!--SCROLLS -->
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+		<style>
+			html 			{ overflow-y:scroll; }
+			body			{ padding-top:50px; }
+			#todo-list		{ margin-bottom:30px; }
+		</style>
+
+		<!--SPELLS-->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
+    	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script><!-- load angular -->
+    	<script src="core.js"></script>
+    </head>
+    <!--SET THE CONTROLLER TO GE ALL TODOS -->
+    <bod ng-controller="mainController">
+    	<div class="container">
+
+    		<!-- HEADER AND TODO COUNT -->
+    		<div class="jumbotron text-center">
+    			<h1>I'm a Todo-aholic <span class="label label-info">{{ todos.length }}</span></h1>
+    		</div>
+
+    		<!--TODO LIST-->
+    		<div id="todo-list" class="row">
+    			<div class="col-sm-4 col-sm-offset-4">
+
+    				<!--LOOP OVER THE TODOS IN $SCOPE.TODOS -->
+    				<div class="checkbox" ng-repeat="todo in todos">
+    					<label>
+    						<input type="checkbox" ng-click="deleteTodo(todo._id)"> {{todo.text}}
+    					</label>
+    				</div>
+    			</div>
+    		</div>
+    		<!-- form and create todos -->
+    		<div id="todo-form" class="row">
+    			<div class="col-sm-8 col-sm-offset-2 text-center">
+    				<form>
+    					<div class="form-group">
+
+    						<!-- BIND THIS VALUE TO FORMDATA.TEXT IN ANGULAR -->
+    						<input type="text" class="form-control input-lg text-center" placeholder="I want a puppy" ng-model="formData.text">
+    					</div>
+
+    					<!--create todo will create new todos -->
+    					<button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add</button>
+    				</form>
+    			</div>
+    		</div>
+    	</div>
+    </body>
+</html>
+
+
+
+
+
+
+
